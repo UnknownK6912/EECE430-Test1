@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <style>
+        body {
+            background-color: #ADD8E6; /* Light Blue */
+            font-family: sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        a {
+            text-decoration: none;
+            color: darkblue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Movie Store Management</h1>
+    <p>Use the links below to manage movie records</p>
+    <ul style="list-style: none; padding: 0;">
+        <li><a href="{% url 'add_movie' %}">➕ Add a New Movie</a></li>
+        <li><a href="{% url 'add_movie' %}">📂 View / Edit / Delete Movies</a></li>
+    </ul>
+</body>
+</html>

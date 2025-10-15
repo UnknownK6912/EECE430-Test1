@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Movie</title>
+    <style>
+        body {
+            background-color: #ADD8E6; /* Light Blue */
+            font-family: sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        form {
+            margin-bottom: 40px;
+        }
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+            background: white;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 10px;
+        }
+        th {
+            background: #4682B4; /* Steel Blue */
+            color: white;
+        }
+        a {
+            text-decoration: none;
+            color: darkblue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add New Movie</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>Existing Movies</h2>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>Director</th>
+            <th>Actions</th>
+        </tr>
+        {% for movie in M %}
+        <tr>
+            <td>{{ movie.MovieTitle }}</td>
+            <td>{{ movie.ReleaseYear }}</td>
+            <td>{{ movie.MovieGenre }}</td>
+            <td>{{ movie.DirectorName }}</td>
+            <td>
+                <a href="{% url 'edit_movie' movie.id %}">Edit</a> |
+                <a href="{% url 'delete_movie' movie.id %}">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No movies added yet.</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p><a href="{% url 'index' %}">⬅ Back to Home</a></p>
+</body>
+</html>
