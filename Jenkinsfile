@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/UnknownK6912/EECE430-Test1'
+                git branch: 'master', url: 'https://github.com/UnknownK6912/EECE430-Test1'
             }
         }
 
