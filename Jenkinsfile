@@ -34,6 +34,9 @@ pipeline {
 
                 REM === Ensure the rollout completes ===
                 kubectl rollout status deployment/django-deployment
+
+                REM === Restart deployment to use latest image ===
+                kubectl rollout restart deployment django-deployment
                 '''
             }
         }
